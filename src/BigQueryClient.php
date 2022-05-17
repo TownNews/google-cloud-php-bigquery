@@ -760,6 +760,31 @@ class BigQueryClient
     }
 
     /**
+     * Create a Json object. This can be used to convert PHP variables
+     * into JSON for the JSON field type in BigQuery
+     *
+     * Example:
+     * ```
+     * $json = $bigQuery->json([
+     *    'complex' => [
+     *        'enum' => [
+     *            1, 2, 3
+     *         ],
+     *         'bool' => true,
+     *         'int' => 123
+     *    ]
+     * ]);
+     * ```
+     *
+     * @param mixed $value The payload to convert to JSON
+     * @return Json
+     */
+    public function json($value)
+    {
+        return new Json($value);
+    }
+
+    /**
      * Create a Time object.
      *
      * Example:

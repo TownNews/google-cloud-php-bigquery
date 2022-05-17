@@ -247,6 +247,17 @@ class ValueMapperTest extends TestCase
         $int64 = new Int64('123');
         $numeric = new Numeric('99999999999999999999999999999999999999.999999999');
         $bigNumeric = new BigNumeric(str_pad('9', 75, '9') . '.999999999');
+        $json = new Json([
+            'complex' => [
+                'enum' => [
+                    1,
+                    2,
+                    3
+                ],
+                'bool' => true,
+                'int' => 123
+            ]
+        ]);
 
         return [
             [$dt, $dt->format('Y-m-d\TH:i:s.u')],
@@ -259,6 +270,7 @@ class ValueMapperTest extends TestCase
             [$int64, '123'],
             [$numeric, $numeric->formatAsString()],
             [$bigNumeric, $bigNumeric->formatAsString()],
+            [$json, $json->formatAsString()]
         ];
     }
 
